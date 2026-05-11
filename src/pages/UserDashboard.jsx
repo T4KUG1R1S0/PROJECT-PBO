@@ -1,3 +1,10 @@
+import {
+  PieChart,
+  Pie,
+  Cell,
+  ResponsiveContainer,
+} from "recharts";
+
 import { useState } from "react";
 
 import {
@@ -16,6 +23,17 @@ import FloatingChat from "../components/FloatingChat";
 export default function UserDashboard() {
 
   const [darkMode, setDarkMode] = useState(false);
+  const data = [
+  { name: "Selesai", value: 5 },
+  { name: "Diproses", value: 3 },
+  { name: "Pending", value: 2 },
+];
+
+  const COLORS = [
+    "#22c55e",
+    "#eab308",
+    "#ef4444",
+];
 
   return (
     <div
@@ -202,7 +220,51 @@ export default function UserDashboard() {
 
         </div>
 
+{/* CHART */}
+<div
+  className={
+    darkMode
+      ? "bg-slate-800 mt-10 rounded-3xl shadow-lg p-6"
+      : "bg-white mt-10 rounded-3xl shadow-lg p-6"
+  }
+>
+
+  <h2 className="text-2xl font-bold mb-6">
+    Statistik Pengaduan
+  </h2>
+
+  <div className="h-[300px]">
+
+    <ResponsiveContainer width="100%" height="100%">
+
+      <PieChart>
+
+        <Pie
+          data={data}
+          dataKey="value"
+          nameKey="name"
+          outerRadius={100}
+          label
+        >
+
+          {data.map((entry, index) => (
+            <Cell
+              key={index}
+              fill={COLORS[index % COLORS.length]}
+            />
+          ))}
+
+        </Pie>
+
+      </PieChart>
+
+    </ResponsiveContainer>
+
+  </div>
+
+</div>
         {/* RIWAYAT PENGADUAN */}
+
         <div
           className={
             darkMode
