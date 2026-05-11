@@ -1,9 +1,12 @@
+import { useState } from "react";
+
 import {
   Home,
   FileText,
   MessageCircle,
   User,
   PlusCircle,
+  Moon,
 } from "lucide-react";
 
 import { Link } from "react-router-dom";
@@ -11,11 +14,26 @@ import { Link } from "react-router-dom";
 import FloatingChat from "../components/FloatingChat";
 
 export default function UserDashboard() {
+
+  const [darkMode, setDarkMode] = useState(false);
+
   return (
-    <div className="flex min-h-screen bg-slate-100">
+    <div
+      className={
+        darkMode
+          ? "flex min-h-screen bg-slate-900 text-white transition-all duration-300"
+          : "flex min-h-screen bg-slate-100 text-black transition-all duration-300"
+      }
+    >
 
       {/* SIDEBAR */}
-      <div className="w-[250px] bg-cyan-600 text-white p-6">
+      <div
+        className={
+          darkMode
+            ? "w-[250px] p-6 bg-slate-800 text-white transition-all duration-300"
+            : "w-[250px] p-6 bg-cyan-600 text-white transition-all duration-300"
+        }
+      >
 
         <h1 className="text-3xl font-bold mb-10">
           CiviCare
@@ -23,7 +41,8 @@ export default function UserDashboard() {
 
         <div className="space-y-4">
 
-          <button className="flex items-center gap-3 w-full p-3 rounded-xl bg-cyan-500">
+          {/* DASHBOARD */}
+          <button className="flex items-center gap-3 w-full p-3 rounded-xl hover:bg-slate-700 transition-all">
 
             <Home />
 
@@ -31,7 +50,8 @@ export default function UserDashboard() {
 
           </button>
 
-          <button className="flex items-center gap-3 w-full p-3 rounded-xl hover:bg-cyan-500">
+          {/* PENGADUAN */}
+          <button className="flex items-center gap-3 w-full p-3 rounded-xl hover:bg-slate-700 transition-all">
 
             <FileText />
 
@@ -39,7 +59,8 @@ export default function UserDashboard() {
 
           </button>
 
-          <button className="flex items-center gap-3 w-full p-3 rounded-xl hover:bg-cyan-500">
+          {/* BANTUAN */}
+          <button className="flex items-center gap-3 w-full p-3 rounded-xl hover:bg-slate-700 transition-all">
 
             <MessageCircle />
 
@@ -47,7 +68,8 @@ export default function UserDashboard() {
 
           </button>
 
-          <button className="flex items-center gap-3 w-full p-3 rounded-xl hover:bg-cyan-500">
+          {/* PROFILE */}
+          <button className="flex items-center gap-3 w-full p-3 rounded-xl hover:bg-slate-700 transition-all">
 
             <User />
 
@@ -62,18 +84,36 @@ export default function UserDashboard() {
       {/* CONTENT */}
       <div className="flex-1 p-8">
 
-        <h1 className="text-4xl font-bold text-slate-800">
+        <h1 className="text-4xl font-bold">
           Dashboard Masyarakat
         </h1>
 
-        <p className="text-gray-500 mt-2">
+        <p
+          className={
+            darkMode
+              ? "mt-2 text-slate-300"
+              : "mt-2 text-gray-500"
+          }
+        >
           Selamat datang di layanan pengaduan masyarakat CiviCare.
         </p>
+
+        {/* DARK MODE BUTTON */}
+        <button
+          onClick={() => setDarkMode(!darkMode)}
+          className="mt-5 flex items-center gap-2 bg-slate-800 text-white px-5 py-3 rounded-2xl hover:bg-slate-700 transition-all"
+        >
+
+          <Moon size={20} />
+
+          {darkMode ? "Light Mode" : "Dark Mode"}
+
+        </button>
 
         {/* BUTTON BUAT PENGADUAN */}
         <Link
           to="/create-report"
-          className="mt-8 inline-flex items-center gap-3 bg-cyan-600 text-white px-6 py-4 rounded-2xl shadow-lg hover:bg-cyan-700"
+          className="mt-8 inline-flex items-center gap-3 bg-cyan-600 text-white px-6 py-4 rounded-2xl shadow-lg hover:bg-cyan-700 transition-all"
         >
 
           <PlusCircle />
@@ -82,12 +122,25 @@ export default function UserDashboard() {
 
         </Link>
 
-        {/* STATUS CARD */}
+        {/* CARD STATUS */}
         <div className="grid md:grid-cols-3 gap-6 mt-10">
 
-          <div className="bg-white p-6 rounded-3xl shadow-lg">
+          {/* CARD 1 */}
+          <div
+            className={
+              darkMode
+                ? "bg-slate-800 p-6 rounded-3xl shadow-lg transition-all duration-300"
+                : "bg-white p-6 rounded-3xl shadow-lg transition-all duration-300"
+            }
+          >
 
-            <h2 className="text-gray-500">
+            <h2
+              className={
+                darkMode
+                  ? "text-slate-300"
+                  : "text-gray-500"
+              }
+            >
               Total Pengaduan
             </h2>
 
@@ -97,9 +150,22 @@ export default function UserDashboard() {
 
           </div>
 
-          <div className="bg-white p-6 rounded-3xl shadow-lg">
+          {/* CARD 2 */}
+          <div
+            className={
+              darkMode
+                ? "bg-slate-800 p-6 rounded-3xl shadow-lg transition-all duration-300"
+                : "bg-white p-6 rounded-3xl shadow-lg transition-all duration-300"
+            }
+          >
 
-            <h2 className="text-gray-500">
+            <h2
+              className={
+                darkMode
+                  ? "text-slate-300"
+                  : "text-gray-500"
+              }
+            >
               Diproses
             </h2>
 
@@ -109,9 +175,22 @@ export default function UserDashboard() {
 
           </div>
 
-          <div className="bg-white p-6 rounded-3xl shadow-lg">
+          {/* CARD 3 */}
+          <div
+            className={
+              darkMode
+                ? "bg-slate-800 p-6 rounded-3xl shadow-lg transition-all duration-300"
+                : "bg-white p-6 rounded-3xl shadow-lg transition-all duration-300"
+            }
+          >
 
-            <h2 className="text-gray-500">
+            <h2
+              className={
+                darkMode
+                  ? "text-slate-300"
+                  : "text-gray-500"
+              }
+            >
               Selesai
             </h2>
 
@@ -123,8 +202,14 @@ export default function UserDashboard() {
 
         </div>
 
-        {/* RIWAYAT */}
-        <div className="bg-white mt-10 rounded-3xl shadow-lg p-6">
+        {/* RIWAYAT PENGADUAN */}
+        <div
+          className={
+            darkMode
+              ? "bg-slate-800 mt-10 rounded-3xl shadow-lg p-6 transition-all duration-300"
+              : "bg-white mt-10 rounded-3xl shadow-lg p-6 transition-all duration-300"
+          }
+        >
 
           <h2 className="text-2xl font-bold mb-6">
             Riwayat Pengaduan
@@ -134,13 +219,25 @@ export default function UserDashboard() {
 
             <thead>
 
-              <tr className="text-left border-b">
+              <tr
+                className={
+                  darkMode
+                    ? "text-left border-b border-slate-700"
+                    : "text-left border-b"
+                }
+              >
 
-                <th className="pb-3">Laporan</th>
+                <th className="pb-3">
+                  Laporan
+                </th>
 
-                <th className="pb-3">Tanggal</th>
+                <th className="pb-3">
+                  Tanggal
+                </th>
 
-                <th className="pb-3">Status</th>
+                <th className="pb-3">
+                  Status
+                </th>
 
               </tr>
 
@@ -148,13 +245,21 @@ export default function UserDashboard() {
 
             <tbody>
 
-              <tr className="border-b">
+              <tr
+                className={
+                  darkMode
+                    ? "border-b border-slate-700"
+                    : "border-b"
+                }
+              >
 
                 <td className="py-4">
                   Jalan rusak depan rumah
                 </td>
 
-                <td>10 Mei 2026</td>
+                <td>
+                  10 Mei 2026
+                </td>
 
                 <td className="text-yellow-500">
                   Diproses
@@ -162,13 +267,21 @@ export default function UserDashboard() {
 
               </tr>
 
-              <tr className="border-b">
+              <tr
+                className={
+                  darkMode
+                    ? "border-b border-slate-700"
+                    : "border-b"
+                }
+              >
 
                 <td className="py-4">
                   Lampu jalan mati
                 </td>
 
-                <td>07 Mei 2026</td>
+                <td>
+                  07 Mei 2026
+                </td>
 
                 <td className="text-green-500">
                   Selesai
@@ -184,6 +297,7 @@ export default function UserDashboard() {
 
       </div>
 
+      {/* FLOATING CHAT */}
       <FloatingChat />
 
     </div>
