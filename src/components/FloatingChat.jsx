@@ -1,5 +1,12 @@
-import { MessageCircle, Bot, Headset } from "lucide-react";
+import {
+  MessageCircle,
+  Bot,
+  Headset,
+} from "lucide-react";
+
 import { useState } from "react";
+
+import { Link } from "react-router-dom";
 
 export default function FloatingChat() {
 
@@ -32,13 +39,16 @@ export default function FloatingChat() {
           </p>
 
           {/* AI BOT */}
-          <button className="w-full mt-6 flex items-center gap-4 bg-slate-100 hover:bg-slate-200 p-4 rounded-2xl">
+          <Link
+            to="/chatbot"
+            className="w-full mt-6 flex items-center gap-4 bg-slate-100 hover:bg-slate-200 p-4 rounded-2xl"
+          >
 
             <Bot className="text-blue-600" />
 
             <div className="text-left">
 
-              <h3 className="font-bold">
+              <h3 className="font-bold text-slate-800">
                 Tanya AI Assistant
               </h3>
 
@@ -48,7 +58,7 @@ export default function FloatingChat() {
 
             </div>
 
-          </button>
+          </Link>
 
           {/* LIVE CS */}
           <button className="w-full mt-4 flex items-center gap-4 bg-slate-100 hover:bg-slate-200 p-4 rounded-2xl">
@@ -57,7 +67,7 @@ export default function FloatingChat() {
 
             <div className="text-left">
 
-              <h3 className="font-bold">
+              <h3 className="font-bold text-slate-800">
                 Hubungi CS Admin
               </h3>
 

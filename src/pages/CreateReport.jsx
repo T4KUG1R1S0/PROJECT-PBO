@@ -1,6 +1,22 @@
 import { Upload } from "lucide-react";
+import { useState } from "react";
 
 export default function CreateReport() {
+
+  const [image, setImage] = useState(null);
+
+  const handleImageChange = (e) => {
+
+    const file = e.target.files[0];
+
+    if (file) {
+
+      setImage(URL.createObjectURL(file));
+
+    }
+
+  };
+
   return (
     <div className="min-h-screen bg-slate-100 p-10">
 
@@ -77,7 +93,10 @@ export default function CreateReport() {
 
             <div className="mt-3 border-2 border-dashed rounded-3xl p-10 text-center">
 
-              <Upload size={50} className="mx-auto text-cyan-600" />
+              <Upload
+                size={50}
+                className="mx-auto text-cyan-600"
+              />
 
               <p className="mt-4 text-gray-500">
                 Klik untuk upload gambar laporan
@@ -85,8 +104,20 @@ export default function CreateReport() {
 
               <input
                 type="file"
+                onChange={handleImageChange}
                 className="mt-5"
               />
+
+              {/* PREVIEW */}
+              {image && (
+
+                <img
+                  src={image}
+                  alt="Preview"
+                  className="mt-6 w-full max-h-[400px] object-cover rounded-2xl shadow-lg"
+                />
+
+              )}
 
             </div>
 

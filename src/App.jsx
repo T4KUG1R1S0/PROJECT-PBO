@@ -5,7 +5,7 @@ import Login from "./pages/Login";
 import AdminDashboard from "./pages/AdminDashboard";
 import UserDashboard from "./pages/UserDashboard";
 import CreateReport from "./pages/CreateReport";
-
+import ChatBot from "./pages/ChatBot";
 
 
 function App() {
@@ -33,6 +33,13 @@ function App() {
           path="/create-report"
           element={<CreateReport />}
         />
+
+        <Route
+          path="/chatbot"
+          element={<ChatBot />}
+        />
+        
+
 
         
       </Routes>
